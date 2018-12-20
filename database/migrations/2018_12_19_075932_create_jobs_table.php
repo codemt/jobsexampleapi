@@ -21,6 +21,7 @@ class CreateJobsTable extends Migration
             $table->string('job_profile');
             $table->string('job_experience');
             $table->string('job_salary');
+            $table->string('job_type');
             $table->string('job_category');
             $table->string('job_location');
             $table->timestamps();

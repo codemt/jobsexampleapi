@@ -14,4 +14,20 @@
 Route::get('/', function () {
     return view('welcome');
 });
-Route::resource('/api/jobs','JobsController');
+
+// Get all Jobs
+Route::get('/api/jobs/all','JobsController@getAllJobs');
+
+
+// Get individual Jobs
+Route::get('/api/jobs/{id}','JobsController@getIndividualJobs');
+
+
+// Get job by category
+Route::get('/api/jobs/category/{category}','JobsController@getJobByCategory');
+
+
+// Get Job by Search
+Route::get('/api/jobs/category/{location}/{experience}/{jobtype}','JobsController@getJobBySearch');
+
+

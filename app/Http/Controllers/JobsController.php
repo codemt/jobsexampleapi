@@ -6,82 +6,54 @@ use Illuminate\Http\Request;
 use App\Jobs;
 class JobsController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
-    {
-        //
-        $all = Jobs::all();
-        return response()->json($all);
+   
+        public function getAllJobs(){
 
-    }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
+                $all = Jobs::all();
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
-    }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
+                return response()->json($all);
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
+        }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
-    }
+        public function getIndividualJobs($id){
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
-    }
+
+                    $getJob = Jobs::find($id);
+                    return response()->json($getJob);
+
+        }
+
+        public function getJobByCategory($category){
+
+
+
+
+                    //return $category;
+                    $jobs = Jobs::where('job_category',$category)->get();
+
+                    return response()->json($jobs); 
+        }
+
+
+        public function getJobBySearch($location,$experience,$jobtype){
+
+
+                
+
+            $jobs = Jobs::select('job_title','job_company','job_profile','job_experience','job_salary','job_location')
+                    ->where('job_location',$location)
+                    ->where('job_experience',$experience)
+                    ->where('job_type',$jobtype)
+                    ->get();
+
+
+                    return response()->json($jobs);
+
+
+        }
+
+      
 }
+
