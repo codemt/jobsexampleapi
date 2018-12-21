@@ -22,6 +22,9 @@ Route::get('/api/jobs/all','JobsController@getAllJobs');
 // Get individual Jobs
 Route::get('/api/jobs/{id}','JobsController@getIndividualJobs');
 
+// get individual job detail
+Route::get('/api/jobs/detail/{id}','JobsController@getJobDetails');
+
 
 // Get job by category
 Route::get('/api/jobs/category/{category}','JobsController@getJobByCategory');
